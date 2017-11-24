@@ -5,9 +5,18 @@
  */
 package main;
 
+import GUI.Mapa;
+import GUI.MenuLista;
+import GUI.VeciProstor;
+import GUI.VezmiCombo;
+import GUI.VybavaObsah;
+import GUI.VychodyCombo;
+import GUI.ZahodCombo;
 import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,9 +25,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -27,35 +39,85 @@ import logika.*;
 import uiText.TextoveRozhrani;
 
 /**
- *
- * @author xzenj02
+ * Hlavni trida - slouzi ke spusteni aplikace
+ * @author dominik
  */
 public class Main extends Application {
-    
+
     private TextArea centralText;
     private IHra hra;
-    private TextField zadejPrikazTextArea;
 
+    public void setHra(IHra hra) {
+        this.hra = hra;
+    }
+    
+    
+    private TextField zadejPrikazTextArea;
+    private VychodyCombo vychodyCombo;
+    private ZahodCombo zahodCombo;
+    private VezmiCombo vezmiCombo;
+    private Mapa mapa;
+    private MenuLista menuLista;
+    private VybavaObsah vybavaObsah;
+    private VeciProstor veciProstor;
+    private Stage stage;
+    private Button button;
+    private Button button2;
+    private Button button3;
+    
     @Override
     public void start(Stage primaryStage) {
+        this.setStage(primaryStage);
+        
         hra = new Hra();
+        mapa = new Mapa(hra);
+        menuLista = new MenuLista(hra, this);
+        vybavaObsah = new VybavaObsah(hra);
+        veciProstor = new VeciProstor(hra);
+        vychodyCombo = new VychodyCombo(hra);
+        zahodCombo = new ZahodCombo(hra);
+        vezmiCombo = new VezmiCombo(hra);
+        button = new Button("Přejdi");        
+        button3 = new Button("Vezmi");
+        button2 = new Button("Zahod");
+        
         BorderPane borderPane = new BorderPane();
+        VBox box = new VBox();
+        BorderPane buttonPane = new BorderPane();        
+        BorderPane button2Pane = new BorderPane();
+        BorderPane button3Pane = new BorderPane();
+      
+        buttonPane.setPadding(new Insets(15, 25, 15, 5));        
+        button2Pane.setPadding(new Insets(15, 25, 15, 5));
+        button3Pane.setPadding(new Insets(15, 25, 15, 5));
         
-        
-        TextArea centralText = new TextArea();
+    
+        // Text s prubehem hry
+        centralText = new TextArea();
         centralText.setText(hra.vratUvitani());
         centralText.setEditable(false);
         borderPane.setCenter(centralText);
         
-        Label zadejPrikazLabel = new Label("Zadej prikaz: ");
+        initComboBox();
+        
+        initVezmiBox();
+        initZahodBox();
+        
+        //label s textem zadej prikaz
+        Label zadejPrikazLabel = new Label("Příkaz: ");
         zadejPrikazLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         
+        //zadejPrikazLabel.setMaxWidth(1);
+        
+        // text area do ktere piseme prikazy
         zadejPrikazTextArea = new TextField("...");
+        zadejPrikazTextArea.setMaxWidth(85);
+        
         zadejPrikazTextArea.setOnAction(new EventHandler<ActionEvent>() {
-            
-            @Override 
+
+            @Override
             public void handle(ActionEvent event) {
-                
+
                 String vstupniPrikaz = zadejPrikazTextArea.getText();
                 String odpovedHry = hra.zpracujPrikaz(vstupniPrikaz);
                 
@@ -65,43 +127,54 @@ public class Main extends Application {
                 zadejPrikazTextArea.setText("");
                 
                 if (hra.konecHry()) {
-                        zadejPrikazTextArea.setEditable(false);
-                        centralText.appendText(hra.vratEpilog());
-                        
-                                     }             
-                        
-                        
-                                                }
-            
-              
+                    zadejPrikazTextArea.setEditable(false);
+                    centralText.appendText(hra.vratEpilog());
+                }
+            }
         });
         
-        FlowPane obrazekFlowPane = new FlowPane();
-        obrazekFlowPane.setPrefSize(300,300);
-        
-        ImageView obrazekImageView = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/mapa.jpg"),300,300,false,true));
-          
-        obrazekFlowPane.setAlignment(Pos.CENTER);
-        obrazekFlowPane.getChildren().add(obrazekImageView);
-       
+        //dolni lista s elementy
         FlowPane dolniLista = new FlowPane();
         dolniLista.setAlignment(Pos.CENTER);
-        dolniLista.getChildren().addAll(zadejPrikazLabel,zadejPrikazTextArea);
-        borderPane.setLeft(obrazekFlowPane);
-        borderPane.setBottom(dolniLista);
+        dolniLista.getChildren().addAll(zadejPrikazLabel,zadejPrikazTextArea, buttonPane, button3Pane, button2Pane);
+        
        
         
         
+        borderPane.setLeft(mapa);
+        borderPane.setBottom(dolniLista);
+        borderPane.setTop(menuLista);        
+        borderPane.setRight(box);
+        box.getChildren().addAll(veciProstor, vybavaObsah);
         
-        Scene scene = new Scene(borderPane, 900, 500);
-
+        
+        
+        Scene scene = new Scene(borderPane, 850, 350);
+        
+        
+        buttonPane.setLeft(vychodyCombo);
+        buttonPane.setRight(button);
+        button3Pane.setLeft(vezmiCombo);
+        button3Pane.setRight(button3);
+        button2Pane.setLeft(zahodCombo);
+        button2Pane.setRight(button2);
+        
         primaryStage.setTitle("Adventura");
 
         primaryStage.setScene(scene);
         primaryStage.show();
+        
         zadejPrikazTextArea.requestFocus();
     }
 
+    public TextArea getCentralText() {
+        return centralText;
+    }
+
+    public Mapa getMapa() {
+        return mapa;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -120,6 +193,103 @@ public class Main extends Application {
                 System.exit(1);
             }
         }
+    }
+
+    /**
+     * @return the stage
+     */
+    public Stage getStage() {
+        return stage;
+    }
+
+    /**
+     * @param stage the stage to set
+     */
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+    
+    /*
+    Spusti ComboBox s vychody a provede jejich prikaz
+   
+    */
+    private void initComboBox() {
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                String value = (String) vychodyCombo.getComboBox().getValue();
+                String prikaz = "jdi " + value;
+                String text = hra.zpracujPrikaz(prikaz);
+
+                
+                centralText.appendText("\n\n" + prikaz + "\n");
+                centralText.appendText("\n\n" + text + "\n");
+
+                zadejPrikazTextArea.setText("");
+
+               
+            }
+        });
+    }
+    
+    private void initZahodBox() {
+        button2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                String value = (String) zahodCombo.getComboBox().getValue();
+                String prikaz = "zahod " + value;
+                String text = hra.zpracujPrikaz(prikaz);
+
+                
+                centralText.appendText("\n\n" + prikaz + "\n");
+                centralText.appendText("\n\n" + text + "\n");
+
+                zadejPrikazTextArea.setText("");
+
+              
+            }
+        });
+    }
+    
+    private void initVezmiBox() {
+        button3.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                String value = (String) vezmiCombo.getComboBox().getValue();
+                String prikaz = "vezmi " + value;
+                String text = hra.zpracujPrikaz(prikaz);
+
+             
+                centralText.appendText("\n\n" + prikaz + "\n");
+                centralText.appendText("\n\n" + text + "\n");
+
+                zadejPrikazTextArea.setText("");
+
+              
+            }
+        });
+    }
+    /*
+    Metoda nastavi pomocne funkce pro observery v jinych tridach po spusteni nove hry
+    @param novaHra
+   
+    */
+    
+    public void newGame(IHra novaHra){
+        this.hra = novaHra;
+        this.mapa.newGame(novaHra);
+        this.centralText.setText(novaHra.vratUvitani());
+        this.zahodCombo.novaHra(hra);
+        this.vychodyCombo.novaHra(hra);
+        this.vezmiCombo.novaHra(hra);
+        this.vybavaObsah.novaHra(hra);
+        this.veciProstor.novaHra(hra);
+        
+        
+        
     }
 
 }

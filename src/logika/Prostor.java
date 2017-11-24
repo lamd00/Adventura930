@@ -29,6 +29,8 @@ public class Prostor {
     private Set<Prostor> vychody;   // obsahuje sousední místnosti
     private Map<String, Vec> veci;  // seznam veci v prostoru
     private Protihrac protihrac;
+    private double posLeft;
+    private double posTop;
 
     /**
      * Vytvoření prostoru se zadaným popisem, např. "kuchyň", "hala", "trávník
@@ -38,13 +40,24 @@ public class Prostor {
      * víceslovný název bez mezer.
      * @param popis Popis prostoru.
      */
-    public Prostor(String nazev, String popis) {
+    public Prostor(String nazev, String popis, double posLeft, double posTop) {
         this.nazev = nazev;
         this.popis = popis;
+        this.posLeft = posLeft;
+        this.posTop = posTop;
         vychody = new HashSet<>();
         veci = new HashMap<>();
 
     }
+    
+    public double getPosLeft() {
+        return posLeft;
+    }
+
+    public double getPosTop() {
+        return posTop;
+    }
+
 
     /**
      * Definuje východ z prostoru (sousední/vedlejsi prostor). Vzhledem k tomu,
@@ -150,7 +163,7 @@ public class Prostor {
     private String popisVeci() {
 
         String vracenyText = "Věci:";
-        for (String nazev : veci.keySet()) {
+        for (String nazev : getVeci().keySet()) {
             vracenyText += " " + nazev;
         }
         return vracenyText;
@@ -222,7 +235,7 @@ public class Prostor {
      */
 
     public void vlozVec(Vec vec) {
-        veci.put(vec.getNazev(), vec);
+        getVeci().put(vec.getNazev(), vec);
     }
 
     /**
@@ -232,7 +245,7 @@ public class Prostor {
      */
     public Vec najdiVec (String nazevVeci)
     {
-        return veci.get(nazevVeci);
+        return getVeci().get(nazevVeci);
     }
 
     /**
@@ -241,8 +254,8 @@ public class Prostor {
      * @param nazev - nazev veci, kterou chceme z prostoru odebrat
      */
     public boolean odeberVec(String nazev) {
-        Vec vec = veci.get(nazev);
-        return veci.remove(nazev,vec);
+        Vec vec = getVeci().get(nazev);
+        return getVeci().remove(nazev,vec);
     }
 
     /**
@@ -255,6 +268,20 @@ public class Prostor {
 
         this.protihrac = pridavan;
         return true;
+    }
+
+    /**
+     * @return the veci
+     */
+    public Map<String, Vec> getVeci() {
+        return veci;
+    }
+
+    /**
+     * @param veci the veci to set
+     */
+    public void setVeci(Map<String, Vec> veci) {
+        this.veci = veci;
     }
 
 }

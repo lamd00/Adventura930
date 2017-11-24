@@ -63,6 +63,7 @@ public class PrikazVezmi implements IPrikaz
         }
 
         if(!vec.isPrenositelna()){  // zjisti, jestli je parametr isPrenositelna false 
+            herniPlan.notifyObservers();
             return "Nechám to tam, kde to je.";
         }
 
@@ -86,6 +87,7 @@ public class PrikazVezmi implements IPrikaz
         herniPlan.getAktualniProstor().odeberVec(nazevVeci);
         // a věc se uloží do výbavy
         vybava.vlozitVec(vec);
+        herniPlan.notifyObservers();
         return "Vybavil ses " + vec.getPopis() + "."; 
     }
 

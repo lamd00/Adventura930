@@ -1,5 +1,10 @@
 package logika;
 
+import java.util.ArrayList;
+import java.util.List;
+import utils.Observer;
+import utils.Subject;
+
 /**
  * Class HerniPlan - třída představující mapu a stav adventury.
  * 
@@ -10,12 +15,14 @@ package logika;
  * @author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Jan Riha, Dominik Lamacz 
  * @version    8.1. 2017
  */
-public class HerniPlan {
+public class HerniPlan implements Subject{
     private Vybava vybava; // soukroma vybava pro hplan
     private Prostor aktualniProstor;
     private boolean vyhra = false;
     private boolean prohra = false;
     private Prostor c1;
+    
+    private List<Observer> listObserveru = new ArrayList<Observer>();
 
     /**
      *  Konstruktor který vytváří jednotlivé prostory a propojuje je pomocí východů.
@@ -33,36 +40,36 @@ public class HerniPlan {
      */
     private void zalozProstoryHry() {
         // vytvářejí se jednotlivé prostory
-        Prostor satna = new Prostor("satna","šatna - zvol obtížnost");
-        Prostor tezka = new Prostor("tezka","střídačka - skoč na led");
-        Prostor lehka = new Prostor("lehka","střídačka - skoč na led");
+        Prostor satna = new Prostor("satna","šatna - zvol obtížnost", 5,13);
+        Prostor tezka = new Prostor("tezka","střídačka - skoč na led", 35,109);
+        Prostor lehka = new Prostor("lehka","střídačka - skoč na led", 35,109);
         
         
-        Prostor A1 = new Prostor("A1","A1 - levé útočné pásmo \n |A|B|C|\n1|X|#|_|\n2|_|_|_|\n3|_|_|_|\n4|_|_|_|");
-        Prostor A2 = new Prostor("A2","A2 - levé střední pásmo - nahoře\n |A|B|C|\n1|_|#|_|\n2|X|_|_|\n3|_|_|_|\n4|_|_|_|");
-        Prostor A3 = new Prostor("A3","A3 - levé střední pásmo - dole\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|X|_|_|\n4|_|_|_|");
-        Prostor A4 = new Prostor("A4","A4 - levé obranné pásmo\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|_|\n4|X|_|_|");
-        Prostor B1 = new Prostor("B1","B1 - střed útočného pásma - brána\n |A|B |C|\n1|_|X#|_|\n2|_|__|_|\n3|_|__|_|\n4|_|__|_|");
-        Prostor B2 = new Prostor("B2","B2 - střed neutrálního pásma - nahoře\n |A|B|C|\n1|_|#|_|\n2|_|X|_|\n3|_|_|_|\n4|_|_|_|");
-        Prostor B3 = new Prostor("B3","B3 - střed neutrálního pásma - dole\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|X|_|\n4|_|_|_|");
-        Prostor B4 = new Prostor("B4","B4 - střed obranného pásma\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|_|\n4|_|X|_|");
-        Prostor C1 = new Prostor("C1","C1 - pravé útočné pásmo\n |A|B|C|\n1|_|#|X|\n2|_|_|_|\n3|_|_|_|\n4|_|_|_|");
-        Prostor C2 = new Prostor("C2","C2 - pravé střední pásmo - nahoře\n |A|B|C|\n1|_|#|_|\n2|_|_|X|\n3|_|_|_|\n4|_|_|_|");
-        Prostor C3 = new Prostor("C3","C3 - pravé střední pásmo - dole\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|X|\n4|_|_|_|");
-        Prostor C4 = new Prostor("C4","C4 - pravé obranné pásmo\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|_|\n4|_|_|X|");
+        Prostor A1 = new Prostor("A1","A1 - levé útočné pásmo \n |A|B|C|\n1|X|#|_|\n2|_|_|_|\n3|_|_|_|\n4|_|_|_|", 62,46);
+        Prostor A2 = new Prostor("A2","A2 - levé střední pásmo - nahoře\n |A|B|C|\n1|_|#|_|\n2|X|_|_|\n3|_|_|_|\n4|_|_|_|", 62,86);
+        Prostor A3 = new Prostor("A3","A3 - levé střední pásmo - dole\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|X|_|_|\n4|_|_|_|", 62,122);
+        Prostor A4 = new Prostor("A4","A4 - levé obranné pásmo\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|_|\n4|X|_|_|", 62,189);
+        Prostor B1 = new Prostor("B1","B1 - střed útočného pásma - brána\n |A|B |C|\n1|_|X#|_|\n2|_|__|_|\n3|_|__|_|\n4|_|__|_|", 104,46);
+        Prostor B2 = new Prostor("B2","B2 - střed neutrálního pásma - nahoře\n |A|B|C|\n1|_|#|_|\n2|_|X|_|\n3|_|_|_|\n4|_|_|_|", 104,86);
+        Prostor B3 = new Prostor("B3","B3 - střed neutrálního pásma - dole\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|X|_|\n4|_|_|_|", 104,122);
+        Prostor B4 = new Prostor("B4","B4 - střed obranného pásma\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|_|\n4|_|X|_|", 104,189);
+        Prostor C1 = new Prostor("C1","C1 - pravé útočné pásmo\n |A|B|C|\n1|_|#|X|\n2|_|_|_|\n3|_|_|_|\n4|_|_|_|", 142,46);
+        Prostor C2 = new Prostor("C2","C2 - pravé střední pásmo - nahoře\n |A|B|C|\n1|_|#|_|\n2|_|_|X|\n3|_|_|_|\n4|_|_|_|", 142,86);
+        Prostor C3 = new Prostor("C3","C3 - pravé střední pásmo - dole\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|X|\n4|_|_|_|", 142,122);
+        Prostor C4 = new Prostor("C4","C4 - pravé obranné pásmo\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|_|\n4|_|_|X|", 142,189);
         
-        Prostor a1 = new Prostor("a1","A1 - levé útočné pásmo \n |A|B|C|\n1|X|#|_|\n2|_|_|_|\n3|_|_|_|\n4|_|_|_|");
-        Prostor a2 = new Prostor("a2","A2 - levé střední pásmo - nahoře\n |A|B|C|\n1|_|#|_|\n2|X|_|_|\n3|_|_|_|\n4|_|_|_|");
-        Prostor a3 = new Prostor("a3","A3 - levé střední pásmo - dole\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|X|_|_|\n4|_|_|_|");
-        Prostor a4 = new Prostor("a4","A4 - levé obranné pásmo\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|_|\n4|X|_|_|");
-        Prostor b1 = new Prostor("b1","B1 - střed útočného pásma - brána\n |A|B |C|\n1|_|X#|_|\n2|_|__|_|\n3|_|__|_|\n4|_|__|_|");
-        Prostor b2 = new Prostor("b2","B2 - střed neutrálního pásma - nahoře\n |A|B|C|\n1|_|#|_|\n2|_|X|_|\n3|_|_|_|\n4|_|_|_|");
-        Prostor b3 = new Prostor("b3","B3 - střed neutrálního pásma - dole\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|X|_|\n4|_|_|_|");
-        Prostor b4 = new Prostor("b4","B4 - střed obranného pásma\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|_|\n4|_|X|_|");
-        Prostor c1 = new Prostor("c1","C1 - pravé útočné pásmo\n |A|B|C|\n1|_|#|X|\n2|_|_|_|\n3|_|_|_|\n4|_|_|_|");
-        Prostor c2 = new Prostor("c2","C2 - pravé střední pásmo - nahoře\n |A|B|C|\n1|_|#|_|\n2|_|_|X|\n3|_|_|_|\n4|_|_|_|");
-        Prostor c3 = new Prostor("c3","C3 - pravé střední pásmo - dole\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|X|\n4|_|_|_|");
-        Prostor c4 = new Prostor("c4","C4 - pravé obranné pásmo\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|_|\n4|_|_|X|");
+        Prostor a1 = new Prostor("a1","A1 - levé útočné pásmo \n |A|B|C|\n1|X|#|_|\n2|_|_|_|\n3|_|_|_|\n4|_|_|_|", 62,46);
+        Prostor a2 = new Prostor("a2","A2 - levé střední pásmo - nahoře\n |A|B|C|\n1|_|#|_|\n2|X|_|_|\n3|_|_|_|\n4|_|_|_|", 62,86);
+        Prostor a3 = new Prostor("a3","A3 - levé střední pásmo - dole\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|X|_|_|\n4|_|_|_|", 62,122);
+        Prostor a4 = new Prostor("a4","A4 - levé obranné pásmo\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|_|\n4|X|_|_|", 62,189);
+        Prostor b1 = new Prostor("b1","B1 - střed útočného pásma - brána\n |A|B |C|\n1|_|X#|_|\n2|_|__|_|\n3|_|__|_|\n4|_|__|_|", 104,46);
+        Prostor b2 = new Prostor("b2","B2 - střed neutrálního pásma - nahoře\n |A|B|C|\n1|_|#|_|\n2|_|X|_|\n3|_|_|_|\n4|_|_|_|", 104,86);
+        Prostor b3 = new Prostor("b3","B3 - střed neutrálního pásma - dole\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|X|_|\n4|_|_|_|", 104,122);
+        Prostor b4 = new Prostor("b4","B4 - střed obranného pásma\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|_|\n4|_|X|_|", 104,189);
+        Prostor c1 = new Prostor("c1","C1 - pravé útočné pásmo\n |A|B|C|\n1|_|#|X|\n2|_|_|_|\n3|_|_|_|\n4|_|_|_|", 142,46);
+        Prostor c2 = new Prostor("c2","C2 - pravé střední pásmo - nahoře\n |A|B|C|\n1|_|#|_|\n2|_|_|X|\n3|_|_|_|\n4|_|_|_|", 142,86);
+        Prostor c3 = new Prostor("c3","C3 - pravé střední pásmo - dole\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|X|\n4|_|_|_|", 142,122);
+        Prostor c4 = new Prostor("c4","C4 - pravé obranné pásmo\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|_|\n4|_|_|X|", 142,189);
 
         // přiřazují se průchody mezi prostory (sousedící prostory)
         satna.setVychod(lehka);
@@ -169,16 +176,16 @@ public class HerniPlan {
         c4.setVychod(b4);
 
         // vytvoříme několik věcí
-        Vec brana = new Vec("brana", "", false); // nezvednutelna - nepotrebuje popis
-        Vec paska = new Vec("paska", "zlatou páskou na hokejku", true);
-        Vec dres = new Vec("dres", "dresem Philadelphia Flyers - je oranzovy, abys ho mohl mit v sobotu na zapas, v nedeli na lov a zbytek tydne pro sbirani odpadku na ulici", true);
-        Vec hul = new Vec("hul", "vycházkovou holí - je pružná a pevná", true);
-        Vec brusleLeva = new Vec("leva_brusle","", true); // brusle maji svuj popis definovany v podmince ve tride vezmi
-        Vec bruslePrava = new Vec("prava_brusle","", true);
+        Vec brana = new Vec("brana", "", false, true, "brana.png"); // nezvednutelna - nepotrebuje popis
+        Vec paska = new Vec("paska", "zlatou páskou na hokejku", true, true, "paska.gif");
+        Vec dres = new Vec("dres", "dresem Philadelphia Flyers - je oranzovy, abys ho mohl mit v sobotu\nna zapas, v nedeli na lov a zbytek tydne pro sbirani odpadku na ulici", true, true, "dres.gif");
+        Vec hul = new Vec("hul", "vycházkovou holí - je pružná a pevná", true, true, "hul.png");
+        Vec brusleLeva = new Vec("leva_brusle","", true, true, "brusleleva.png"); // brusle maji svuj popis definovany v podmince ve tride vezmi
+        Vec bruslePrava = new Vec("prava_brusle","", true, true, "brusleprava.png");
 
         // umístíme věci do prostorů
         b1.vlozVec(brana);
-        c4.vlozVec(paska);
+        a3.vlozVec(paska);
         a1.vlozVec(paska); // paska bude na dvou mistech, je to ale stejny predmet, takze ikdyz ji zvedne podruhe, bude ji mit jen jednou
         c3.vlozVec(brusleLeva);
         b2.vlozVec(bruslePrava);
@@ -225,7 +232,7 @@ public class HerniPlan {
         C2.vlozHrace(BMarchand);
         B4.vlozHrace(MZuccarello);
 
-        aktualniProstor = satna;  // hra začíná v šatně
+        aktualniProstor = satna;  // hra začíná v šatně UPRAVIT!!
     }
 
     /**
@@ -236,6 +243,7 @@ public class HerniPlan {
 
     public Prostor getAktualniProstor() {
         return aktualniProstor;
+        
     }
 
     /**
@@ -245,6 +253,7 @@ public class HerniPlan {
      */
     public void setAktualniProstor(Prostor prostor) {
         aktualniProstor = prostor;
+        notifyObservers();
     }
 
     /**
@@ -301,6 +310,23 @@ public class HerniPlan {
      */
     public Vybava getVybava() {
         return this.vybava;
+    }
+
+    @Override
+    public void registerObserver(Observer observer) {
+        listObserveru.add(observer);
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        listObserveru.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer listObserveruItem : listObserveru) {
+            listObserveruItem.update();
+        }
     }
 
 }

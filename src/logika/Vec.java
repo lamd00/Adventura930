@@ -17,16 +17,21 @@ public class Vec
     private String popis;
     private boolean prenositelna;
     private Map<String,Vec>seznamVeci;  // novy seznam veci - private pro Vec
+    private boolean zobrazena;
+    private String obrazek;
+
 
     //== Konstruktory a tovární metody =============================================
     /***************************************************************************
      *  Konstruktor vytvari vec, udava jeji nazev, popis a vlastnost (ne)prenositelnosti
      */
-    public Vec(String nazev, String popis, boolean prenositelna)
+    public Vec(String nazev, String popis, boolean prenositelna, boolean zobrazena, String obrazek)
     {
         this.nazev = nazev;
         this.popis = popis;
         this.prenositelna = prenositelna;
+        this.zobrazena = zobrazena;
+        this.obrazek = obrazek;
         this.seznamVeci = seznamVeci;
 
     }
@@ -58,6 +63,26 @@ public class Vec
     public boolean isPrenositelna() { 
         return prenositelna;
     }
+    
+      public boolean isZobrazena() {
+        return zobrazena;
+    }
+
+    
+    /**
+     * Metoda urci, jestli je vec v prostoru, kde je hrac
+     *
+     * @param isViditelna true, pokud je vÄ›c viditelnĂˇ. False, pokud vÄ›c nenĂ­
+     * viditelnĂˇ.
+     */
+    public void setZobrazena(boolean isZobrazena) {
+        this.zobrazena = isZobrazena;
+    }
+
+    public String getObrazek() {
+        return obrazek;
+    }
+
 
 
 

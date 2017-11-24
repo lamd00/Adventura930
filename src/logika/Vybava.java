@@ -82,6 +82,11 @@ public class Vybava
     {
         return seznamVeci.get(nazevVeci);
     }
+     
+     public Map<String, Vec> getCelaVybava() {
+        return seznamVeci;
+    }
+
 
 
 }

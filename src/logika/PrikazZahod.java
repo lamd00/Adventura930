@@ -49,6 +49,8 @@ public class PrikazZahod implements IPrikaz
         vybava.odeberVec(nazevVeci); // odebere zvolenou vec z vybavy
         hPlan.getAktualniProstor().vlozVec(vec); // vlozi vyhozenou vec do aktualniho pasma
         
+        hPlan.notifyObservers();
+        
         return  "Odložil jsi " + nazevVeci + ", teď leží v aktuálním pásmu. Škoda, možná by se to hodilo... nebo taky ne.";
     }
 
