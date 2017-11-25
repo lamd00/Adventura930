@@ -11,6 +11,7 @@ public class Protihrac
     private String jmeno;
     private boolean typ; 
     private boolean porazen; 
+    private String obraz;
 
     //== Konstruktory a tovární metody =============================================
     /***************************************************************************
@@ -19,9 +20,10 @@ public class Protihrac
      * @param   jmeno       jmeno hrace
      * @param   typ         typ hrace
      */
-    public Protihrac (String jmeno, boolean typ) {
+    public Protihrac (String jmeno, boolean typ, String obraz) {
         this.jmeno = jmeno;
         this.typ = typ;
+        this.obraz = obraz;
         porazen = false;
 
     }
@@ -63,6 +65,10 @@ public class Protihrac
 
     public boolean isPorazen() {
         return porazen;
+    }
+    
+    public String getObraz() {
+        return obraz;
     }
 
 }

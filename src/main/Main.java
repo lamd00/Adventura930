@@ -5,6 +5,7 @@
  */
 package main;
 
+import GUI.HracProstor;
 import GUI.Mapa;
 import GUI.MenuLista;
 import GUI.VeciProstor;
@@ -60,6 +61,7 @@ public class Main extends Application {
     private MenuLista menuLista;
     private VybavaObsah vybavaObsah;
     private VeciProstor veciProstor;
+    private HracProstor hracProstor;
     private Stage stage;
     private Button button;
     private Button button2;
@@ -74,6 +76,7 @@ public class Main extends Application {
         menuLista = new MenuLista(hra, this);
         vybavaObsah = new VybavaObsah(hra);
         veciProstor = new VeciProstor(hra);
+        hracProstor = new HracProstor(hra);
         vychodyCombo = new VychodyCombo(hra);
         zahodCombo = new ZahodCombo(hra);
         vezmiCombo = new VezmiCombo(hra);
@@ -145,7 +148,7 @@ public class Main extends Application {
         borderPane.setBottom(dolniLista);
         borderPane.setTop(menuLista);        
         borderPane.setRight(box);
-        box.getChildren().addAll(veciProstor, vybavaObsah);
+        box.getChildren().addAll(new Label (" Protihrac:"), hracProstor, new Label(" Vec(i) v danem pasmu:"), veciProstor, new Label(" Výbava:"), vybavaObsah);
         
         
         
@@ -287,6 +290,7 @@ public class Main extends Application {
         this.vezmiCombo.novaHra(hra);
         this.vybavaObsah.novaHra(hra);
         this.veciProstor.novaHra(hra);
+        this.hracProstor.novaHra(hra);
         
         
         

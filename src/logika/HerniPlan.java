@@ -204,18 +204,18 @@ public class HerniPlan implements Subject{
 
         // vytvorime postavy, false = fyzicky hrac; true = zrucny hrac
 
-        Protihrac TJOshie = new Protihrac("T. J. Oshie", true);
-        Protihrac ZdenoChara = new Protihrac("Zdeno Chara", false);
-        Protihrac BobProbert = new Protihrac("Bob Probert", false);
-        Protihrac PavelDatsyuk = new Protihrac("Pavel Datsyuk", true);
-        Protihrac SidneyCrosby = new Protihrac("Sidney Crosby", true);
+        Protihrac TJOshie = new Protihrac("T. J. Oshie", true, "oshie.jpg");
+        Protihrac ZdenoChara = new Protihrac("Zdeno Chara", false, "chara.jpg");
+        Protihrac BobProbert = new Protihrac("Bob Probert", false, "probert.jpg");
+        Protihrac PavelDatsyuk = new Protihrac("Pavel Datsyuk", true, "datsyuk.jpg");
+        Protihrac SidneyCrosby = new Protihrac("Sidney Crosby", true, "crosby.jpg");
         
-        Protihrac MStone = new Protihrac("Mark Stone", true);
-        Protihrac MBorowiecki = new Protihrac("Mark Borowiecki", false);
-        Protihrac MMartin = new Protihrac("Matt Martin", false);
-        Protihrac LSchenn = new Protihrac("Luke Schenn", false);
-        Protihrac BMarchand = new Protihrac("Brad Marchand", true);
-        Protihrac MZuccarello = new Protihrac("Mats Zuccarello", true);
+        Protihrac MStone = new Protihrac("Mark Stone", true, "stone.jpg");
+        Protihrac MBorowiecki = new Protihrac("Mark Borowiecki", false, "borowiecki.jpg");
+        Protihrac MMartin = new Protihrac("Matt Martin", false, "martin.jpg");
+        Protihrac LSchenn = new Protihrac("Luke Schenn", false, "schenn.jpg");
+        Protihrac BMarchand = new Protihrac("Brad Marchand", true, "marchand.jpg");
+        Protihrac MZuccarello = new Protihrac("Mats Zuccarello", true, "zuccarello.jpg");
 
         //umístíme postavy do prostorů
 
@@ -224,6 +224,7 @@ public class HerniPlan implements Subject{
         b3.vlozHrace(BobProbert);
         c1.vlozHrace(PavelDatsyuk);
         c2.vlozHrace(SidneyCrosby);
+        
         
         A2.vlozHrace(MStone);
         A1.vlozHrace(MBorowiecki);

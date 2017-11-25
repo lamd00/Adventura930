@@ -55,19 +55,23 @@ public class HracProstor extends ListView implements Observer {
     @Override
     public void update() {
 
-        Map<String, Protihrac> sHraci;
-        sHraci = hra.getHerniPlan().getAktualniProstor().getProtihrac();
+       // Map<String, Protihrac> sHraci;
         
+        Protihrac sHraci = hra.getHerniPlan().getAktualniProstor().getProtihrac();
         hraci.clear();
-        for (String x : sHraci.keySet()) {
-            Vec pomocna = sHraci.get(x);
-            ImageView obrazek
+        if (sHraci != null && !sHraci.isPorazen()){
+        
+       /* for (String x : sHraci.keySet()) {
+            Protihrac pomocna = sHraci.get(x);*/
+            ImageView obraz
                      
-                    = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/" + pomocna.getObrazek()), 100, 71, false, false));
+                    = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/" + sHraci.getObraz()), 100, 71, false, false));
 
-            hraci.add(obrazek);
+            hraci.add(obraz);
+            hra.getHerniPlan().registerObserver(this);
         }
-    }
+        }
+    
 
     /**
      * 
@@ -80,6 +84,8 @@ public class HracProstor extends ListView implements Observer {
         this.hra.getHerniPlan().registerObserver(this);
         update();
     }
+    
+    
 
     
 }
