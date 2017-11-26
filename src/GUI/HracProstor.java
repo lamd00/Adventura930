@@ -64,7 +64,7 @@ public class HracProstor extends ListView implements Observer {
        
             ImageView obraz
                      
-                    = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/" + sHraci.getObraz()), 170, 215, false, false));
+                    = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/" + sHraci.getObraz()), 160, 185, false, false));
             hraci.add(obraz);
         }
         }

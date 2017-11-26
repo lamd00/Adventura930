@@ -69,6 +69,7 @@ public class Main extends Application {
     private Button button3;
     private Button button4;
     private Button button5;
+    private Button button6;
     
     @Override
     public void start(Stage primaryStage) {
@@ -88,6 +89,7 @@ public class Main extends Application {
         button3 = new Button("Vezmi");
         button4 = new Button("Hit");
         button5 = new Button("Klicka");
+        button6 = new Button("Strel");
         
         BorderPane borderPane = new BorderPane();
         VBox box1 = new VBox();
@@ -98,13 +100,16 @@ public class Main extends Application {
         BorderPane buttonVezmi = new BorderPane();
         BorderPane buttonHit = new BorderPane();
         BorderPane buttonKlicka = new BorderPane();
+        BorderPane buttonStrel = new BorderPane();
+        
 
       
         buttonPrejdi.setPadding(new Insets(15, 25, 15, 5));        
         buttonZahod.setPadding(new Insets(15, 25, 15, 5));
         buttonVezmi.setPadding(new Insets(15, 25, 15, 5));
         buttonHit.setPadding(new Insets(5, 10, 5, 0));
-        buttonKlicka.setPadding(new Insets(5, 0, 5, 0));
+        buttonKlicka.setPadding(new Insets(5, 10, 5, 0));
+        buttonStrel.setPadding(new Insets(5, 0, 5, 0));
         
     
         // Text s prubehem hry
@@ -118,6 +123,7 @@ public class Main extends Application {
         initZahodBox();
         initHit();
         initKlicka();
+        initStrel();
         
         
         //label s textem zadej prikaz
@@ -164,7 +170,7 @@ public class Main extends Application {
         borderPane.setRight(box1);
         box1.getChildren().addAll(new Label("Vec(i) v danem pasmu:"), veciProstor, new Label("Výbava:"), vybavaObsah);
         box2.getChildren().addAll(new Label ("Mapa:"), mapa,new Label ("Protihrac:"),  hracProstor, box3);
-        box3.getChildren().addAll(buttonHit, buttonKlicka);
+        box3.getChildren().addAll(buttonHit, buttonKlicka, buttonStrel);
         
         box1.setAlignment(Pos.CENTER);
         box2.setAlignment(Pos.CENTER);
@@ -172,7 +178,7 @@ public class Main extends Application {
         
         
         
-        Scene scene = new Scene(borderPane, 870, 640);
+        Scene scene = new Scene(borderPane, 1000, 640);
         
         
         buttonPrejdi.setLeft(vychodyCombo);
@@ -183,6 +189,7 @@ public class Main extends Application {
         buttonZahod.setRight(button2);
         buttonHit.setTop(button4);        
         buttonKlicka.setTop(button5);
+        buttonStrel.setTop(button6);
         
         primaryStage.setTitle("Adventura");
 
@@ -325,6 +332,25 @@ public class Main extends Application {
 
                 
                 String prikaz = "klicka";
+                String text = hra.zpracujPrikaz(prikaz);
+
+                centralText.appendText("\n\n" + prikaz + "\n");
+                centralText.appendText("\n\n" + text + "\n");
+              
+                zadejPrikazTextArea.setText("");
+
+              
+            }
+        });
+    }
+    
+    private void initStrel() {
+        button6.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                
+                String prikaz = "strel";
                 String text = hra.zpracujPrikaz(prikaz);
 
                 centralText.appendText("\n\n" + prikaz + "\n");
