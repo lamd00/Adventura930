@@ -45,29 +45,29 @@ public class HerniPlan implements Subject{
         Prostor lehka = new Prostor("lehka","střídačka - skoč na led", 35,109);
         
         
-        Prostor A1 = new Prostor("A1","A1 - levé útočné pásmo \n |A|B|C|\n1|X|#|_|\n2|_|_|_|\n3|_|_|_|\n4|_|_|_|", 62,46);
-        Prostor A2 = new Prostor("A2","A2 - levé střední pásmo - nahoře\n |A|B|C|\n1|_|#|_|\n2|X|_|_|\n3|_|_|_|\n4|_|_|_|", 62,86);
+        Prostor A1 = new Prostor("A1","A1 - levé útočné pásmo \n |A|B|C|\n1|X|#|_|\n2|_|_|_|\n3|_|_|_|\n4|_|_|_|", 62,35);
+        Prostor A2 = new Prostor("A2","A2 - levé střední pásmo - nahoře\n |A|B|C|\n1|_|#|_|\n2|X|_|_|\n3|_|_|_|\n4|_|_|_|", 62,80);
         Prostor A3 = new Prostor("A3","A3 - levé střední pásmo - dole\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|X|_|_|\n4|_|_|_|", 62,122);
         Prostor A4 = new Prostor("A4","A4 - levé obranné pásmo\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|_|\n4|X|_|_|", 62,189);
-        Prostor B1 = new Prostor("B1","B1 - střed útočného pásma - brána\n |A|B |C|\n1|_|X#|_|\n2|_|__|_|\n3|_|__|_|\n4|_|__|_|", 104,46);
-        Prostor B2 = new Prostor("B2","B2 - střed neutrálního pásma - nahoře\n |A|B|C|\n1|_|#|_|\n2|_|X|_|\n3|_|_|_|\n4|_|_|_|", 104,86);
+        Prostor B1 = new Prostor("B1","B1 - střed útočného pásma - brána\n |A|B |C|\n1|_|X#|_|\n2|_|__|_|\n3|_|__|_|\n4|_|__|_|", 104,35);
+        Prostor B2 = new Prostor("B2","B2 - střed neutrálního pásma - nahoře\n |A|B|C|\n1|_|#|_|\n2|_|X|_|\n3|_|_|_|\n4|_|_|_|", 104,80);
         Prostor B3 = new Prostor("B3","B3 - střed neutrálního pásma - dole\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|X|_|\n4|_|_|_|", 104,122);
         Prostor B4 = new Prostor("B4","B4 - střed obranného pásma\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|_|\n4|_|X|_|", 104,189);
-        Prostor C1 = new Prostor("C1","C1 - pravé útočné pásmo\n |A|B|C|\n1|_|#|X|\n2|_|_|_|\n3|_|_|_|\n4|_|_|_|", 142,46);
-        Prostor C2 = new Prostor("C2","C2 - pravé střední pásmo - nahoře\n |A|B|C|\n1|_|#|_|\n2|_|_|X|\n3|_|_|_|\n4|_|_|_|", 142,86);
+        Prostor C1 = new Prostor("C1","C1 - pravé útočné pásmo\n |A|B|C|\n1|_|#|X|\n2|_|_|_|\n3|_|_|_|\n4|_|_|_|", 142,35);
+        Prostor C2 = new Prostor("C2","C2 - pravé střední pásmo - nahoře\n |A|B|C|\n1|_|#|_|\n2|_|_|X|\n3|_|_|_|\n4|_|_|_|", 142,80);
         Prostor C3 = new Prostor("C3","C3 - pravé střední pásmo - dole\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|X|\n4|_|_|_|", 142,122);
         Prostor C4 = new Prostor("C4","C4 - pravé obranné pásmo\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|_|\n4|_|_|X|", 142,189);
         
-        Prostor a1 = new Prostor("a1","A1 - levé útočné pásmo \n |A|B|C|\n1|X|#|_|\n2|_|_|_|\n3|_|_|_|\n4|_|_|_|", 62,46);
-        Prostor a2 = new Prostor("a2","A2 - levé střední pásmo - nahoře\n |A|B|C|\n1|_|#|_|\n2|X|_|_|\n3|_|_|_|\n4|_|_|_|", 62,86);
+        Prostor a1 = new Prostor("a1","A1 - levé útočné pásmo \n |A|B|C|\n1|X|#|_|\n2|_|_|_|\n3|_|_|_|\n4|_|_|_|", 62,35);
+        Prostor a2 = new Prostor("a2","A2 - levé střední pásmo - nahoře\n |A|B|C|\n1|_|#|_|\n2|X|_|_|\n3|_|_|_|\n4|_|_|_|", 62,80);
         Prostor a3 = new Prostor("a3","A3 - levé střední pásmo - dole\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|X|_|_|\n4|_|_|_|", 62,122);
         Prostor a4 = new Prostor("a4","A4 - levé obranné pásmo\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|_|\n4|X|_|_|", 62,189);
-        Prostor b1 = new Prostor("b1","B1 - střed útočného pásma - brána\n |A|B |C|\n1|_|X#|_|\n2|_|__|_|\n3|_|__|_|\n4|_|__|_|", 104,46);
-        Prostor b2 = new Prostor("b2","B2 - střed neutrálního pásma - nahoře\n |A|B|C|\n1|_|#|_|\n2|_|X|_|\n3|_|_|_|\n4|_|_|_|", 104,86);
+        Prostor b1 = new Prostor("b1","B1 - střed útočného pásma - brána\n |A|B |C|\n1|_|X#|_|\n2|_|__|_|\n3|_|__|_|\n4|_|__|_|", 104,35);
+        Prostor b2 = new Prostor("b2","B2 - střed neutrálního pásma - nahoře\n |A|B|C|\n1|_|#|_|\n2|_|X|_|\n3|_|_|_|\n4|_|_|_|", 104,80);
         Prostor b3 = new Prostor("b3","B3 - střed neutrálního pásma - dole\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|X|_|\n4|_|_|_|", 104,122);
         Prostor b4 = new Prostor("b4","B4 - střed obranného pásma\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|_|\n4|_|X|_|", 104,189);
-        Prostor c1 = new Prostor("c1","C1 - pravé útočné pásmo\n |A|B|C|\n1|_|#|X|\n2|_|_|_|\n3|_|_|_|\n4|_|_|_|", 142,46);
-        Prostor c2 = new Prostor("c2","C2 - pravé střední pásmo - nahoře\n |A|B|C|\n1|_|#|_|\n2|_|_|X|\n3|_|_|_|\n4|_|_|_|", 142,86);
+        Prostor c1 = new Prostor("c1","C1 - pravé útočné pásmo\n |A|B|C|\n1|_|#|X|\n2|_|_|_|\n3|_|_|_|\n4|_|_|_|", 142,35);
+        Prostor c2 = new Prostor("c2","C2 - pravé střední pásmo - nahoře\n |A|B|C|\n1|_|#|_|\n2|_|_|X|\n3|_|_|_|\n4|_|_|_|", 142,80);
         Prostor c3 = new Prostor("c3","C3 - pravé střední pásmo - dole\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|X|\n4|_|_|_|", 142,122);
         Prostor c4 = new Prostor("c4","C4 - pravé obranné pásmo\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|_|\n4|_|_|X|", 142,189);
 
@@ -213,7 +213,7 @@ public class HerniPlan implements Subject{
         Protihrac MStone = new Protihrac("Mark Stone", true, "stone.jpg");
         Protihrac MBorowiecki = new Protihrac("Mark Borowiecki", false, "borowiecki.jpg");
         Protihrac MMartin = new Protihrac("Matt Martin", false, "martin.jpg");
-        Protihrac LSchenn = new Protihrac("Luke Schenn", false, "schenn.jpg");
+        Protihrac LSchenn = new Protihrac("Luke Schenn", false, "shenn.jpg");
         Protihrac BMarchand = new Protihrac("Brad Marchand", true, "marchand.jpg");
         Protihrac MZuccarello = new Protihrac("Mats Zuccarello", true, "zuccarello.jpg");
 

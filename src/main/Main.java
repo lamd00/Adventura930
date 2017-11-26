@@ -91,7 +91,8 @@ public class Main extends Application {
         
         BorderPane borderPane = new BorderPane();
         VBox box1 = new VBox();
-        HBox box2 = new HBox();
+        VBox box2 = new VBox();
+        HBox box3 = new HBox();
         BorderPane buttonPrejdi = new BorderPane();        
         BorderPane buttonZahod = new BorderPane();
         BorderPane buttonVezmi = new BorderPane();
@@ -102,8 +103,8 @@ public class Main extends Application {
         buttonPrejdi.setPadding(new Insets(15, 25, 15, 5));        
         buttonZahod.setPadding(new Insets(15, 25, 15, 5));
         buttonVezmi.setPadding(new Insets(15, 25, 15, 5));
-        buttonHit.setPadding(new Insets(5, 0, 5, 5));
-        buttonKlicka.setPadding(new Insets(5, 0, 5, 5));
+        buttonHit.setPadding(new Insets(5, 10, 5, 0));
+        buttonKlicka.setPadding(new Insets(5, 0, 5, 0));
         
     
         // Text s prubehem hry
@@ -157,17 +158,21 @@ public class Main extends Application {
        
         
         
-        borderPane.setLeft(mapa);
+        borderPane.setLeft(box2);
         borderPane.setBottom(dolniLista);
         borderPane.setTop(menuLista);        
         borderPane.setRight(box1);
-       // borderPane.setRight(box2);
-        box1.getChildren().addAll(new Label (" Protihrac:"),  hracProstor, box2, new Label(" Vec(i) v danem pasmu:"), veciProstor, new Label(" Výbava:"), vybavaObsah);
-        box2.getChildren().addAll(buttonHit, buttonKlicka);
+        box1.getChildren().addAll(new Label("Vec(i) v danem pasmu:"), veciProstor, new Label("Výbava:"), vybavaObsah);
+        box2.getChildren().addAll(new Label ("Mapa:"), mapa,new Label ("Protihrac:"),  hracProstor, box3);
+        box3.getChildren().addAll(buttonHit, buttonKlicka);
+        
+        box1.setAlignment(Pos.CENTER);
+        box2.setAlignment(Pos.CENTER);
+        box3.setAlignment(Pos.CENTER);
         
         
         
-        Scene scene = new Scene(borderPane, 850, 350);
+        Scene scene = new Scene(borderPane, 870, 640);
         
         
         buttonPrejdi.setLeft(vychodyCombo);

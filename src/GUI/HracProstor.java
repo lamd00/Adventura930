@@ -43,7 +43,7 @@ public class HracProstor extends ListView implements Observer {
     
     private void init() {
         this.setItems(hraci);        
-        this.setPrefSize(200, 143);
+        this.setPrefSize(200, 306);
         hra.getHerniPlan().registerObserver(this);
         update();
     }
@@ -61,12 +61,10 @@ public class HracProstor extends ListView implements Observer {
         hraci.clear();
         if (sHraci != null && !sHraci.isPorazen()){
         
-       /* for (String x : sHraci.keySet()) {
-            Protihrac pomocna = sHraci.get(x);*/
+       
             ImageView obraz
                      
-                    = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/" + sHraci.getObraz()), 100, 71, false, false));
-
+                    = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/" + sHraci.getObraz()), 170, 215, false, false));
             hraci.add(obraz);
         }
         }

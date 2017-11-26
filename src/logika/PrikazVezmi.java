@@ -103,6 +103,8 @@ public class PrikazVezmi implements IPrikaz
     }
     
     
+    
+    
 
     //== Soukromé metody (instancí i třídy) ========================================
 

@@ -43,7 +43,7 @@ public class VybavaObsah extends ListView implements Observer {
 
     private void init() {
         this.setItems(data);
-        this.setPrefSize(200, 143);      
+        this.setPrefSize(200, 280);      
         hra.getHerniPlan().registerObserver(this);
         update();
     }
@@ -62,7 +62,7 @@ public class VybavaObsah extends ListView implements Observer {
             Vec helper = seznamVeci.get(x);
             ImageView obrazek
                      
-                    = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/" + helper.getObrazek()), 180, 120, false, false));
+                    = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/" + helper.getObrazek()), 160, 120, false, false));
 
             data.add(obrazek);
         }

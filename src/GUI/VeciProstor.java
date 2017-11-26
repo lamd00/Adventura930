@@ -41,7 +41,7 @@ public class VeciProstor extends ListView implements Observer {
     
     private void init() {
         this.setItems(veci);        
-        this.setPrefSize(200, 143);
+        this.setPrefSize(200, 280);
         hra.getHerniPlan().registerObserver(this);
         update();
     }
@@ -61,7 +61,7 @@ public class VeciProstor extends ListView implements Observer {
             Vec pomocna = sVeci.get(x);
             ImageView obrazek
                      
-                    = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/" + pomocna.getObrazek()), 100, 71, false, false));
+                    = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/" + pomocna.getObrazek()), 160, 120, false, false));
 
             veci.add(obrazek);
         }
