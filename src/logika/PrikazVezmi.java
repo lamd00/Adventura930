@@ -2,6 +2,8 @@
  * Kontrola kódování: Příliš žluťoučký kůň úpěl ďábelské ódy. */
 package logika;
 
+
+
 /*******************************************************************************
  * Třída příkazVezmi představuje příkaz pro sbírání zvedatelných předmětů a jejich ukládání do výbavy
  *
@@ -99,6 +101,8 @@ public class PrikazVezmi implements IPrikaz
     public String getNazev() {
         return NAZEV;
     }
+    
+    
 
     //== Soukromé metody (instancí i třídy) ========================================
 

@@ -62,10 +62,13 @@ public class Main extends Application {
     private VybavaObsah vybavaObsah;
     private VeciProstor veciProstor;
     private HracProstor hracProstor;
+    private PrikazVezmi prikazVezmi;
     private Stage stage;
     private Button button;
     private Button button2;
     private Button button3;
+    private Button button4;
+    private Button button5;
     
     @Override
     public void start(Stage primaryStage) {
@@ -80,19 +83,27 @@ public class Main extends Application {
         vychodyCombo = new VychodyCombo(hra);
         zahodCombo = new ZahodCombo(hra);
         vezmiCombo = new VezmiCombo(hra);
-        button = new Button("Přejdi");        
-        button3 = new Button("Vezmi");
+        button = new Button("Přejdi");
         button2 = new Button("Zahod");
+        button3 = new Button("Vezmi");
+        button4 = new Button("Hit");
+        button5 = new Button("Klicka");
         
         BorderPane borderPane = new BorderPane();
-        VBox box = new VBox();
-        BorderPane buttonPane = new BorderPane();        
-        BorderPane button2Pane = new BorderPane();
-        BorderPane button3Pane = new BorderPane();
+        VBox box1 = new VBox();
+        HBox box2 = new HBox();
+        BorderPane buttonPrejdi = new BorderPane();        
+        BorderPane buttonZahod = new BorderPane();
+        BorderPane buttonVezmi = new BorderPane();
+        BorderPane buttonHit = new BorderPane();
+        BorderPane buttonKlicka = new BorderPane();
+
       
-        buttonPane.setPadding(new Insets(15, 25, 15, 5));        
-        button2Pane.setPadding(new Insets(15, 25, 15, 5));
-        button3Pane.setPadding(new Insets(15, 25, 15, 5));
+        buttonPrejdi.setPadding(new Insets(15, 25, 15, 5));        
+        buttonZahod.setPadding(new Insets(15, 25, 15, 5));
+        buttonVezmi.setPadding(new Insets(15, 25, 15, 5));
+        buttonHit.setPadding(new Insets(5, 0, 5, 5));
+        buttonKlicka.setPadding(new Insets(5, 0, 5, 5));
         
     
         // Text s prubehem hry
@@ -101,10 +112,12 @@ public class Main extends Application {
         centralText.setEditable(false);
         borderPane.setCenter(centralText);
         
-        initComboBox();
-        
+        initComboBox();        
         initVezmiBox();
         initZahodBox();
+        initHit();
+        initKlicka();
+        
         
         //label s textem zadej prikaz
         Label zadejPrikazLabel = new Label("Příkaz: ");
@@ -139,7 +152,7 @@ public class Main extends Application {
         //dolni lista s elementy
         FlowPane dolniLista = new FlowPane();
         dolniLista.setAlignment(Pos.CENTER);
-        dolniLista.getChildren().addAll(zadejPrikazLabel,zadejPrikazTextArea, buttonPane, button3Pane, button2Pane);
+        dolniLista.getChildren().addAll(zadejPrikazLabel,zadejPrikazTextArea, buttonPrejdi, buttonVezmi, buttonZahod);
         
        
         
@@ -147,20 +160,24 @@ public class Main extends Application {
         borderPane.setLeft(mapa);
         borderPane.setBottom(dolniLista);
         borderPane.setTop(menuLista);        
-        borderPane.setRight(box);
-        box.getChildren().addAll(new Label (" Protihrac:"), hracProstor, new Label(" Vec(i) v danem pasmu:"), veciProstor, new Label(" Výbava:"), vybavaObsah);
+        borderPane.setRight(box1);
+       // borderPane.setRight(box2);
+        box1.getChildren().addAll(new Label (" Protihrac:"),  hracProstor, box2, new Label(" Vec(i) v danem pasmu:"), veciProstor, new Label(" Výbava:"), vybavaObsah);
+        box2.getChildren().addAll(buttonHit, buttonKlicka);
         
         
         
         Scene scene = new Scene(borderPane, 850, 350);
         
         
-        buttonPane.setLeft(vychodyCombo);
-        buttonPane.setRight(button);
-        button3Pane.setLeft(vezmiCombo);
-        button3Pane.setRight(button3);
-        button2Pane.setLeft(zahodCombo);
-        button2Pane.setRight(button2);
+        buttonPrejdi.setLeft(vychodyCombo);
+        buttonPrejdi.setRight(button);
+        buttonVezmi.setLeft(vezmiCombo);
+        buttonVezmi.setRight(button3);
+        buttonZahod.setLeft(zahodCombo);
+        buttonZahod.setRight(button2);
+        buttonHit.setTop(button4);        
+        buttonKlicka.setTop(button5);
         
         primaryStage.setTitle("Adventura");
 
@@ -256,7 +273,7 @@ public class Main extends Application {
         });
     }
     
-    private void initVezmiBox() {
+     private void initVezmiBox() {
         button3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -275,6 +292,48 @@ public class Main extends Application {
             }
         });
     }
+    
+    
+    private void initHit() {
+        button4.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                
+                String prikaz = "hit";
+                String text = hra.zpracujPrikaz(prikaz);
+
+                centralText.appendText("\n\n" + prikaz + "\n");
+                centralText.appendText("\n\n" + text + "\n");
+              
+                zadejPrikazTextArea.setText("");
+
+              
+            }
+        });
+    }
+    
+    private void initKlicka() {
+        button5.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                
+                String prikaz = "klicka";
+                String text = hra.zpracujPrikaz(prikaz);
+
+                centralText.appendText("\n\n" + prikaz + "\n");
+                centralText.appendText("\n\n" + text + "\n");
+              
+                zadejPrikazTextArea.setText("");
+
+              
+            }
+        });
+    }
+    
+    
+   
     /*
     Metoda nastavi pomocne funkce pro observery v jinych tridach po spusteni nove hry
     @param novaHra
@@ -291,6 +350,7 @@ public class Main extends Application {
         this.vybavaObsah.novaHra(hra);
         this.veciProstor.novaHra(hra);
         this.hracProstor.novaHra(hra);
+     //   this.prikazVezmi.novaHra(hra);
         
         
         
