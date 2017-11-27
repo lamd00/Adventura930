@@ -41,6 +41,11 @@ public class HracProstor extends ListView implements Observer {
         init();
     }
     
+    /*
+    Inicializace panelu, predmety, ktere v nem jsou (hraci), rozmery a zavolani observera
+    
+    */
+    
     private void init() {
         this.setItems(hraci);        
         this.setPrefSize(200, 306);
@@ -55,7 +60,7 @@ public class HracProstor extends ListView implements Observer {
     @Override
     public void update() {
 
-       // Map<String, Protihrac> sHraci;
+       
         
         Protihrac sHraci = hra.getHerniPlan().getAktualniProstor().getProtihrac();
         hraci.clear();

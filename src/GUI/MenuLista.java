@@ -20,7 +20,7 @@ import logika.IHra;
 import main.Main;
 
 /**
- * Trida slouzi k vytvoreni listy, ve ktere bude nabidka
+ * Trida slouzi k vytvoreni listy, ve ktere bude nabidka s napovedou, novou hrou atd.
  * @author dominik
  */
 public class MenuLista extends MenuBar{
@@ -49,7 +49,6 @@ public class MenuLista extends MenuBar{
         Menu napoveda = new Menu("Pomoc!");
         
         MenuItem novaHra = new MenuItem("Nova hra");
-        //, new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/ikona.png")))
         
         novaHra.setAccelerator(KeyCombination.keyCombination("Ctrl+H"));
         MenuItem konecHry = new MenuItem("Konec hry");
@@ -86,18 +85,26 @@ public class MenuLista extends MenuBar{
         oProgramu.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
+            
+            /*
+            Okenko O programu            
+            */
             public void handle(ActionEvent event) {
             
                 Alert oProgramuAlert = new Alert(Alert.AlertType.INFORMATION);
                 
-                oProgramuAlert.setTitle("O pragramu");
-                oProgramuAlert.setHeaderText("Super adventura XYZ");
-                oProgramuAlert.setContentText("Loren ipsum");
+                oProgramuAlert.setTitle("Adventura - projekt v predmetu Softwarove inzenyrstvi 4IT115 na VSE v Praze");
+                oProgramuAlert.setHeaderText("Jednoducha aplikace v jazyce Java - hokejova hra");
+                oProgramuAlert.setContentText("Dominik Lamacz (lamd00), ZS 2017/18");
                 oProgramuAlert.initOwner(main.getStage());
                 
                 oProgramuAlert.showAndWait();
             }
         });
+        /*
+        Okenko s Napovedou
+        
+        */
         
        napovedaItem.setOnAction(new EventHandler<ActionEvent>() {
 

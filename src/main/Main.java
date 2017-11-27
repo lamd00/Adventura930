@@ -123,7 +123,9 @@ public class Main extends Application {
         initZahodBox();
         initHit();
         initKlicka();
-        initStrel();
+        initStrel(); 
+        
+        
         
         
         //label s textem zadej prikaz
@@ -242,8 +244,7 @@ public class Main extends Application {
     }
     
     /*
-    Spusti ComboBox s vychody a provede jejich prikaz
-   
+    Nasledujicich 5 metod inicializuje svuj panel pro provedeni prikazu
     */
     private void initComboBox() {
         button.setOnAction(new EventHandler<ActionEvent>() {
@@ -265,6 +266,7 @@ public class Main extends Application {
         });
     }
     
+    
     private void initZahodBox() {
         button2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -279,6 +281,8 @@ public class Main extends Application {
                 centralText.appendText("\n\n" + text + "\n");
 
                 zadejPrikazTextArea.setText("");
+                
+                hra.getHerniPlan().notifyObservers();
 
               
             }
@@ -320,7 +324,7 @@ public class Main extends Application {
               
                 zadejPrikazTextArea.setText("");
 
-              
+              hra.getHerniPlan().notifyObservers();
             }
         });
     }
@@ -339,7 +343,7 @@ public class Main extends Application {
               
                 zadejPrikazTextArea.setText("");
 
-              
+              hra.getHerniPlan().notifyObservers();
             }
         });
     }
@@ -358,7 +362,7 @@ public class Main extends Application {
               
                 zadejPrikazTextArea.setText("");
 
-              
+              hra.getHerniPlan().notifyObservers();
             }
         });
     }
@@ -381,6 +385,7 @@ public class Main extends Application {
         this.vybavaObsah.novaHra(hra);
         this.veciProstor.novaHra(hra);
         this.hracProstor.novaHra(hra);
+     
      //   this.prikazVezmi.novaHra(hra);
         
         

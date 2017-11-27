@@ -53,18 +53,22 @@ public class PrikazHit implements IPrikaz {
     public String proved(String... parametry){
 
         Protihrac protihrac = hPlan.getAktualniProstor().getProtihrac();
-        if (protihrac == null) { // pokud v pasmu zadny protihrac neni
+        if (protihrac == null || protihrac.isPorazen()) { // pokud v pasmu zadny protihrac neni
+            hra.getHerniPlan().notifyObservers();
             return "Vrazil jsi do vzduchu. Pěkná práce! Příště by asi bylo lepší hitovat nějakého hráče";
         }
 
         if(protihrac.isTyp() == true) { // zjistuje typ hrace (true = zrucny hrac, ktery se da porazit hitem)
 
             protihrac.setPorazen(true);
+            hra.getHerniPlan().notifyObservers();
             return "Sejmul jsi ho, dobrá práce!";
         }
         else{ // pokud se hrac neda porazit hitem a uzivatel zvoli prikaz hit => prohra
             hra.setKonecHry(true);
+            hra.getHerniPlan().notifyObservers();
             return "Hráč hit ustál a obral tě o puk, vrať se na střídačku, příští střídání snad bude lepší";
+            
 
         }
     }

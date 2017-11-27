@@ -1,5 +1,7 @@
 package logika;
 
+import javafx.scene.input.KeyCombination;
+
 /**
  * Trida PrikazStrel slouzi pro prikaz strel, 
  * ktery bude umoznen provest po ziskani zlate pasky a prechodu do pasma B1
@@ -15,7 +17,7 @@ public class PrikazStrel implements IPrikaz
     private Vybava vybava;
 
     /**
-     * Konstruktor  ttridy
+     * Konstruktor  tridy
      * 
      * @param hPlan - herni plan
      */
@@ -36,6 +38,7 @@ public class PrikazStrel implements IPrikaz
     @Override
     public String proved(String... parametry){
         Prostor aktualniProstor = hPlan.getAktualniProstor(); 
+        
         if(!vybava.jePaska()){ // zkontroluje, ze ma hrac zlatou pasku
 
             return "Bez zlaté pásky ti zklouzne puk z hole, zkus ji najít a pak teprve vystřelit.";

@@ -51,6 +51,7 @@ class PrikazJdi implements IPrikaz {
         Prostor sousedniProstor = plan.getAktualniProstor().vratSousedniProstor(smer);
 
         if (sousedniProstor == null) {
+            
             return "Tam se odsud jít nedá!";
         }
         else {

@@ -47,16 +47,19 @@ public class PrikazKlicka implements IPrikaz {
     public String proved(String... parametry){
 
         Protihrac protihrac = hPlan.getAktualniProstor().getProtihrac();
-        if (protihrac == null) {
+        if (protihrac == null || protihrac.isPorazen()) {
+            hra.getHerniPlan().notifyObservers();
             return "Obkličkoval jsi sám sebe. Potlesk od fanoušků jsi sklidil, ale teď se zkus držet plánu";
         }
 
         if(protihrac.isTyp()) { 
             hra.setKonecHry(true);
+            hra.getHerniPlan().notifyObservers();
             return "Hráč ti vypíchnul puk, vrať se na střídačku, příští střídání snad bude lepší";
         }
         else{
             protihrac.setPorazen(true);
+            hra.getHerniPlan().notifyObservers();
             return "Obkličkoval jsi ho, paráda!";
         }
     }

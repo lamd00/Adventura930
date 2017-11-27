@@ -66,7 +66,7 @@ public class HerniPlan implements Subject{
         Prostor b2 = new Prostor("b2","B2 - střed neutrálního pásma - nahoře\n |A|B|C|\n1|_|#|_|\n2|_|X|_|\n3|_|_|_|\n4|_|_|_|", 104,80);
         Prostor b3 = new Prostor("b3","B3 - střed neutrálního pásma - dole\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|X|_|\n4|_|_|_|", 104,122);
         Prostor b4 = new Prostor("b4","B4 - střed obranného pásma\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|_|\n4|_|X|_|", 104,189);
-        Prostor c1 = new Prostor("c1","C1 - pravé útočné pásmo\n |A|B|C|\n1|_|#|X|\n2|_|_|_|\n3|_|_|_|\n4|_|_|_|", 142,35);
+        c1 = new Prostor("c1","C1 - pravé útočné pásmo\n |A|B|C|\n1|_|#|X|\n2|_|_|_|\n3|_|_|_|\n4|_|_|_|", 142,35);
         Prostor c2 = new Prostor("c2","C2 - pravé střední pásmo - nahoře\n |A|B|C|\n1|_|#|_|\n2|_|_|X|\n3|_|_|_|\n4|_|_|_|", 142,80);
         Prostor c3 = new Prostor("c3","C3 - pravé střední pásmo - dole\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|X|\n4|_|_|_|", 142,122);
         Prostor c4 = new Prostor("c4","C4 - pravé obranné pásmo\n |A|B|C|\n1|_|#|_|\n2|_|_|_|\n3|_|_|_|\n4|_|_|X|", 142,189);

@@ -29,6 +29,11 @@ public class VezmiCombo extends ComboBox implements Observer {
     public ComboBox getComboBox() {
         return this;
     }
+    
+    /*
+    Inicializace panelu, predmety, ktere v nem jsou (seznam veci v prostoru), napis v radku, rozmery a zavolani observera
+    
+    */
 
     public void init() {
         this.setItems(seznam);
@@ -41,7 +46,7 @@ public class VezmiCombo extends ComboBox implements Observer {
       }
 
     /**
-     * 
+     * Vypise seznam veci v danem prostoru
      */
     public void update() {
         seznam.clear();
@@ -53,7 +58,7 @@ public class VezmiCombo extends ComboBox implements Observer {
     
 
     /**
-     * 
+     * Pomoci observera se pri zavolani nove hry combobox vyprazdni
      */
     public void novaHra(IHra hra) {
         this.hra.getHerniPlan().removeObserver(this);

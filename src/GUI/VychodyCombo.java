@@ -25,7 +25,7 @@ public class VychodyCombo extends ComboBox implements Observer {
     String value = " ";
     
     /* 
-    Konstrutor vytvori seznam s moznymi vychody z daneho prostoru
+    Konstruktor vytvori seznam s moznymi vychody z daneho prostoru
     @param hra
     
     */
@@ -33,10 +33,16 @@ public class VychodyCombo extends ComboBox implements Observer {
         this.hra = hra;
         init();
     }
-    
+    /*
+    vygeneruje combo box
+    */
     public ComboBox getComboBox() {
         return this;
     }
+    /*
+    Inicializace panelu, predmety, ktere v nem jsou (options - mozne vychody), defaultni napis v radku, rozmery a zavolani observera
+    
+    */
 
     public void init() {
         this.setItems(options);

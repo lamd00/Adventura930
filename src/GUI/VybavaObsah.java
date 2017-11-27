@@ -40,6 +40,11 @@ public class VybavaObsah extends ListView implements Observer {
         this.hra = hra;
         init();
     }
+    
+    /*
+    Inicializace panelu, predmety, ktere v nem jsou (data - veci ve vybave), rozmery a zavolani observera
+    
+    */
 
     private void init() {
         this.setItems(data);
@@ -49,7 +54,7 @@ public class VybavaObsah extends ListView implements Observer {
     }
 
     /**
-     * 
+     * Vypise seznam predmetu ve vybave a priradi k nim obrazek
      * 
      */
     @Override
@@ -69,7 +74,7 @@ public class VybavaObsah extends ListView implements Observer {
     }
 
     /**
-     * 
+     * Pri zavolani nove hry se obrazky ve vybave vymazou
      *
      * @param hra
      */

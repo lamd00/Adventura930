@@ -38,6 +38,10 @@ public class VeciProstor extends ListView implements Observer {
         this.hra = hra;
         init();
     }
+    /*
+    Inicializace panelu, predmety, ktere v nem jsou (veci), rozmery a zavolani observera
+    
+    */
     
     private void init() {
         this.setItems(veci);        
