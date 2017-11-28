@@ -67,7 +67,7 @@ public class VybavaObsah extends ListView implements Observer {
             Vec helper = seznamVeci.get(x);
             ImageView obrazek
                      
-                    = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/" + helper.getObrazek()), 160, 120, false, false));
+                    = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/" + helper.getObrazek()), 175, 95, false, false));
 
             data.add(obrazek);
         }

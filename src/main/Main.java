@@ -105,11 +105,11 @@ public class Main extends Application {
 
       
         buttonPrejdi.setPadding(new Insets(15, 25, 15, 5));        
-        buttonZahod.setPadding(new Insets(15, 25, 15, 5));
-        buttonVezmi.setPadding(new Insets(15, 25, 15, 5));
+        buttonZahod.setPadding(new Insets(15, 25, 15, 10));
+        buttonVezmi.setPadding(new Insets(15, 25, 15, 10));
         buttonHit.setPadding(new Insets(5, 10, 5, 0));
         buttonKlicka.setPadding(new Insets(5, 10, 5, 0));        
-        buttonStrel.setPadding(new Insets(15, 25, 15, 5));
+        buttonStrel.setPadding(new Insets(15, 25, 15, 200));
     
         // Text s prubehem hry
         centralText = new TextArea();
@@ -132,10 +132,10 @@ public class Main extends Application {
         zadejPrikazLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         
         //zadejPrikazLabel.setMaxWidth(1);
-        
+            
         // text area do ktere piseme prikazy
         zadejPrikazTextArea = new TextField("...");
-        zadejPrikazTextArea.setMaxWidth(85);
+        zadejPrikazTextArea.setMaxWidth(300);
         
         zadejPrikazTextArea.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -160,7 +160,7 @@ public class Main extends Application {
         //dolni lista s elementy
         FlowPane dolniLista = new FlowPane();
         dolniLista.setAlignment(Pos.CENTER);
-        dolniLista.getChildren().addAll(zadejPrikazLabel,zadejPrikazTextArea, buttonPrejdi, buttonVezmi, buttonZahod, buttonStrel);
+        dolniLista.getChildren().addAll(zadejPrikazLabel,zadejPrikazTextArea, buttonStrel);
         
        
         
@@ -169,8 +169,8 @@ public class Main extends Application {
         borderPane.setBottom(dolniLista);
         borderPane.setTop(menuLista);        
         borderPane.setRight(box1);
-        box1.getChildren().addAll(new Label("Vec(i) v danem pasmu:"), veciProstor, new Label("Výbava:"), vybavaObsah);
-        box2.getChildren().addAll(new Label ("Mapa:"), mapa,new Label ("Protihrac:"),  hracProstor, box3);
+        box1.getChildren().addAll(new Label("Vec(i) v danem pasmu:"), veciProstor, buttonVezmi, new Label("Výbava:"), vybavaObsah, buttonZahod);
+        box2.getChildren().addAll(new Label ("Mapa:"), mapa, buttonPrejdi, new Label ("Protihrac:"),  hracProstor, box3);
         box3.getChildren().addAll(buttonHit, buttonKlicka);
         
         box1.setAlignment(Pos.CENTER);

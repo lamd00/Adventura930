@@ -65,7 +65,7 @@ public class VeciProstor extends ListView implements Observer {
             Vec pomocna = sVeci.get(x);
             ImageView obrazek
                      
-                    = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/" + pomocna.getObrazek()), 160, 120, false, false));
+                    = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/" + pomocna.getObrazek()), 175, 95, false, false));
 
             veci.add(obrazek);
         }
