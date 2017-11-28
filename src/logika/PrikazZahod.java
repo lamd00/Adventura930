@@ -20,7 +20,7 @@ public class PrikazZahod implements IPrikaz
     /***************************************************************************
      *  Konstruktor tridy
      *  
-     *  @param plan herní plán, ve kterém se bude ve hře "chodit" 
+     *  @param hPlan herní plán, ve kterém se bude ve hře "chodit" 
      */
     public PrikazZahod(HerniPlan hPlan)
     {
@@ -32,7 +32,7 @@ public class PrikazZahod implements IPrikaz
     /**
      * Metoda kontroluje, jestli je prikaz a parametr zadan spravne, pokud ano, odlozi danou veci z vybavy do aktualniho prostoru
      * 
-     * @parametry - parametr prikazu - nazev zahozene veci
+     * @param parametry - parametr prikazu - nazev zahozene veci
      * @return - hlaska vypsana hraci
      */
     public String proved(String... parametry) {

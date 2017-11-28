@@ -39,6 +39,8 @@ public class Prostor {
      * @param nazev nazev prostoru, jednoznačný identifikátor, jedno slovo nebo
      * víceslovný název bez mezer.
      * @param popis Popis prostoru.
+     * @param posLeft - parametr pro umisteni vlevo
+     * @param posTop - parametr pro umisteni vpravo
      */
     public Prostor(String nazev, String popis, double posLeft, double posTop) {
         this.nazev = nazev;
@@ -242,6 +244,7 @@ public class Prostor {
      * Metoda, ktera vyhleda vec podle sveho unikatniho nazvu
      * 
      * @param nazevVeci - nazev vyhledavane veci
+     * @return getVeci - vrati nazev veci
      */
     public Vec najdiVec (String nazevVeci)
     {
@@ -252,6 +255,7 @@ public class Prostor {
      * Metoda slouzici k odebrani veci z daneho prostoru
      * 
      * @param nazev - nazev veci, kterou chceme z prostoru odebrat
+     * @return getVeci vrati nazev veci a vymaze vybranou
      */
     public boolean odeberVec(String nazev) {
         Vec vec = getVeci().get(nazev);
@@ -264,10 +268,9 @@ public class Prostor {
      * @param pridavan - jmeno hrace, ktery je vkladan
      * 
      */
-    public boolean vlozHrace(Protihrac pridavan) {
+    public void vlozHrace(Protihrac pridavan) {
 
         this.protihrac = pridavan;
-        return true;
     }
 
     /**

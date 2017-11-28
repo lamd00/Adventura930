@@ -185,7 +185,7 @@ public class HerniPlan implements Subject{
 
         // umístíme věci do prostorů
         b1.vlozVec(brana);
-        a3.vlozVec(paska);
+        c4.vlozVec(paska);
         a1.vlozVec(paska); // paska bude na dvou mistech, je to ale stejny predmet, takze ikdyz ji zvedne podruhe, bude ji mit jen jednou
         c3.vlozVec(brusleLeva);
         b2.vlozVec(bruslePrava);

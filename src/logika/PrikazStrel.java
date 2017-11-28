@@ -32,7 +32,7 @@ public class PrikazStrel implements IPrikaz
      * Metoda provede příkaz střel. Tento příkaz je možné provést jen v případě, 
      * že má hráč ve výbavě zlatou pásku a nachází se v prostoru B1 - před bránou
      * 
-     * @param - pripadne parametry - pro tento prikaz nepotrebne
+     * @param parametry - pripadne parametry - pro tento prikaz nepotrebne
      * @return - hlaska vypsana hraci
      */
     @Override
@@ -55,7 +55,7 @@ public class PrikazStrel implements IPrikaz
     /**
      *  Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
      *  
-     *  @ return nazev prikazu
+     *  @return nazev prikazu
      */
     @Override
     public String getNazev() {

@@ -50,9 +50,9 @@ public class ZahodCombo extends ComboBox implements Observer {
     */
     public void init() {
         this.setItems(options);
-        this.setPromptText("Předmět");
+        this.setPromptText("Předměty");
         this.setEditable(true);
-        this.setPrefWidth(100);
+        this.setPrefWidth(120);
         hra.getHerniPlan().registerObserver(this);
         update();
 

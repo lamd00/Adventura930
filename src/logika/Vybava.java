@@ -26,6 +26,8 @@ public class Vybava
      * Metoda vlozitVec slouzi pro vkladani veci do vybavy. Zkontroluje, jestli neni plna a pokud neni, vlozi vec
      * 
      * @param vec - vkladana vec (nazev)
+     * @return true kontrola jestli je vec vlozena
+     * @return false kontrola
      */
     public boolean vlozitVec (Vec vec) { 
         if (seznamVeci.size() < VELIKOST ) {  
@@ -38,7 +40,7 @@ public class Vybava
     /**
      * Metoda hlida, jestli neni prostor pro vybavu plny
      * 
-     * @return - true, pokud maji veci ve vybave stejny pocet jako je kapacita => kapacita je plna
+     * @return - true, pokud maji veci ve vybave stejny pocet jako je kapacita = kapacita je plna
      */
     public boolean plno() {
         if (seznamVeci.size() == VELIKOST) {
@@ -66,6 +68,7 @@ public class Vybava
      * Metoda pro odebirani veci z vybavy
      * 
      * @param nazevVeci - nazev odebirane veci ze seznamu vybavy
+     * @return seznamVeci.remove(nazevVeci, vec) vypise nazev veci pro zahozeni
      */
     public boolean odeberVec (String nazevVeci)
     {
@@ -77,6 +80,7 @@ public class Vybava
      * Metoda pro nalezeni veci ve vybave, slouzi pro jeji odebrani
      * 
      * @param nazevVeci - nazev veci ve vybave
+     * @return seznamVeci.get(nazevVeci); vypise veci ve vybave
      */
      public Vec najdiVec (String nazevVeci)
     {

@@ -39,7 +39,7 @@ public class VezmiCombo extends ComboBox implements Observer {
         this.setItems(seznam);
         this.setPromptText("Předměty");
         this.setEditable(true);
-        this.setPrefWidth(100);
+        this.setPrefWidth(120);
         hra.getHerniPlan().registerObserver(this);
         update();
 
@@ -59,6 +59,7 @@ public class VezmiCombo extends ComboBox implements Observer {
 
     /**
      * Pomoci observera se pri zavolani nove hry combobox vyprazdni
+     * @param hra
      */
     public void novaHra(IHra hra) {
         this.hra.getHerniPlan().removeObserver(this);

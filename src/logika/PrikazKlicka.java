@@ -27,7 +27,7 @@ public class PrikazKlicka implements IPrikaz {
     /**
      *  Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
      *  
-     *  @ return nazev prikazu
+     *  @return nazev prikazu
      */
     @Override
     public String getNazev() {

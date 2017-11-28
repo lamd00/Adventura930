@@ -19,6 +19,7 @@ public class Protihrac
      * 
      * @param   jmeno       jmeno hrace
      * @param   typ         typ hrace
+     * @param obraz  obrazek protihrace
      */
     public Protihrac (String jmeno, boolean typ, String obraz) {
         this.jmeno = jmeno;

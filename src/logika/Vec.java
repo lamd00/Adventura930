@@ -24,6 +24,11 @@ public class Vec
     //== Konstruktory a tovární metody =============================================
     /***************************************************************************
      *  Konstruktor vytvari vec, udava jeji nazev, popis a vlastnost (ne)prenositelnosti
+     * @param nazev nazev veci
+     * @param popis popis veci
+     * @param prenositelna je prenositelna/neni
+     * @param zobrazena je zobrazena/neni
+     * @param obrazek obrazek veci
      */
     public Vec(String nazev, String popis, boolean prenositelna, boolean zobrazena, String obrazek)
     {
@@ -72,8 +77,7 @@ public class Vec
     /**
      * Metoda urci, jestli je vec v prostoru, kde je hrac
      *
-     * @param isViditelna true, pokud je vÄ›c viditelnĂˇ. False, pokud vÄ›c nenĂ­
-     * viditelnĂˇ.
+     * @param isZobrazena ukaze jestli je veci viditelna
      */
     public void setZobrazena(boolean isZobrazena) {
         this.zobrazena = isZobrazena;
