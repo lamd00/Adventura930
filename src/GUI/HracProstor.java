@@ -34,7 +34,7 @@ public class HracProstor extends ListView implements Observer {
      * 
      *
      * Vytvoreni panelu
-     * @param hra
+     * @param hra slouzi k ukonceni hry
      */
     public HracProstor(IHra hra) {
         this.hra = hra;
@@ -78,7 +78,7 @@ public class HracProstor extends ListView implements Observer {
     /**
      * 
      * Panel se pri spusteni nove hry vyprazdni
-     * @param hra
+     * @param hra slouzi k ukonceni hry
      */
     public void novaHra(IHra hra) {
         // this.hra.getHerniPlan().deleteObserver(this);

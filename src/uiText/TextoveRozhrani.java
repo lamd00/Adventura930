@@ -20,7 +20,7 @@ public class TextoveRozhrani {
 
     /**
      *  Vytváří hru.
-     *  @param hra 
+     *  @param hra slouzi k uvitani nebo ukonceni hry
      */
     public TextoveRozhrani(IHra hra) {
         this.hra = hra;

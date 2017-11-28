@@ -59,7 +59,7 @@ public class VezmiCombo extends ComboBox implements Observer {
 
     /**
      * Pomoci observera se pri zavolani nove hry combobox vyprazdni
-     * @param hra
+     * @param hra slouzi k ukonceni hry
      */
     public void novaHra(IHra hra) {
         this.hra.getHerniPlan().removeObserver(this);

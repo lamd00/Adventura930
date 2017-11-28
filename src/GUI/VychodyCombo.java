@@ -69,7 +69,7 @@ public class VychodyCombo extends ComboBox implements Observer {
 
     /**
      * Observeri, kteri aktualizuji seznam pri nove hre
-     * @param hra
+     * @param hra slouzi k ukonceni hry
      */
     public void novaHra(IHra hra) {
         this.hra.getHerniPlan().removeObserver(this);

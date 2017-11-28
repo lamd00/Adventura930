@@ -34,7 +34,7 @@ public class VybavaObsah extends ListView implements Observer {
      * 
      *
      *
-     * @param hra
+     * @param hra slouzi k ukonceni hry
      */
     public VybavaObsah(IHra hra) {
         this.hra = hra;
@@ -76,7 +76,7 @@ public class VybavaObsah extends ListView implements Observer {
     /**
      * Pri zavolani nove hry se obrazky ve vybave vymazou
      *
-     * @param hra
+     * @param hra slouzi k ukonceni hry
      */
     public void novaHra(IHra hra) {
         // this.hra.getHerniPlan().deleteObserver(this);
