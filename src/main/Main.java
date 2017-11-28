@@ -108,9 +108,8 @@ public class Main extends Application {
         buttonZahod.setPadding(new Insets(15, 25, 15, 5));
         buttonVezmi.setPadding(new Insets(15, 25, 15, 5));
         buttonHit.setPadding(new Insets(5, 10, 5, 0));
-        buttonKlicka.setPadding(new Insets(5, 10, 5, 0));
-        buttonStrel.setPadding(new Insets(5, 0, 5, 0));
-        
+        buttonKlicka.setPadding(new Insets(5, 10, 5, 0));        
+        buttonStrel.setPadding(new Insets(15, 25, 15, 5));
     
         // Text s prubehem hry
         centralText = new TextArea();
@@ -161,7 +160,7 @@ public class Main extends Application {
         //dolni lista s elementy
         FlowPane dolniLista = new FlowPane();
         dolniLista.setAlignment(Pos.CENTER);
-        dolniLista.getChildren().addAll(zadejPrikazLabel,zadejPrikazTextArea, buttonPrejdi, buttonVezmi, buttonZahod);
+        dolniLista.getChildren().addAll(zadejPrikazLabel,zadejPrikazTextArea, buttonPrejdi, buttonVezmi, buttonZahod, buttonStrel);
         
        
         
@@ -172,7 +171,7 @@ public class Main extends Application {
         borderPane.setRight(box1);
         box1.getChildren().addAll(new Label("Vec(i) v danem pasmu:"), veciProstor, new Label("Výbava:"), vybavaObsah);
         box2.getChildren().addAll(new Label ("Mapa:"), mapa,new Label ("Protihrac:"),  hracProstor, box3);
-        box3.getChildren().addAll(buttonHit, buttonKlicka, buttonStrel);
+        box3.getChildren().addAll(buttonHit, buttonKlicka);
         
         box1.setAlignment(Pos.CENTER);
         box2.setAlignment(Pos.CENTER);
